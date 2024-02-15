@@ -231,6 +231,19 @@ header {
   margin-bottom: 10px;
 }
 
+.btn-more a{
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 20px 85px 20px 40px;
+  border-radius: 4px;
+  background: var(---2, linear-gradient(135deg, #FCCF31 0%, #F55555 100%));
+}
+.btn-more img {
+  position: relative;
+  left: 20px;
+}
+
 .main__tablet-next {
   display: flex;
   align-items: center;
@@ -350,12 +363,8 @@ polygon {
 @media(max-width: 750px){
 
   .main__content{
-    margin: 120px 0 30px 0;
+    margin-top: 120px;
   }
-
-  .container{
-    overflow: hidden;
-  };
 
   .main__text-content{
     padding-right: 0;
@@ -481,8 +490,11 @@ polygon {
     text-align: center;
     padding: 20px 10px 20px 10px;
   }
-  .button a{
+  .btn-more a{
     padding: 10px 20%;
+  }
+  .big_btn a{
+    padding: 20px 20%;
   }
 }
 
