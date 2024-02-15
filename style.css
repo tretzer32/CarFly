@@ -43,7 +43,7 @@ section {
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
   min-width: 320px;
@@ -103,12 +103,11 @@ h6 {
 body {
   color: white;
   font-family: 'DIN Pro';
-  background-color: #191717;
   font-weight: 300;
 }
 
 .wrapper{
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   position: relative;
 }
@@ -146,9 +145,10 @@ body {
 
 header {
   position: fixed;
-  top: 1.5vh;
+  padding: 15px 0 5px 0;
   width: 100%;
   z-index: 99;
+  background: #191717;
 }
 
 .header__block {
@@ -165,12 +165,13 @@ header {
 }
 
 .main {
-  min-height: 100%;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   background: url(img/lines/Rectangle1.svg) no-repeat;
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
 }
 
 
@@ -264,7 +265,7 @@ header {
 
 .main__scroll-down {
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -307,13 +308,6 @@ polygon {
 	}
 	 
 }
-
-.scroll-down-text{
-  font-size: 16px;
-  font-weight: 300;
-  color: #ffffff;
-}
-
 
 
 @media(max-width: 1200px){
@@ -513,7 +507,6 @@ polygon {
   text-decoration: none;
   user-select: none;
   letter-spacing: 1px;
-  text-transform: uppercase;
   transition: all 0.1s ease-out;
   border-radius: 3px;
   z-index: 2;
