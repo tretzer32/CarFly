@@ -54,7 +54,7 @@ body {
 body {
   font-size: 100%;
   line-height: 1;
-  font-size: 14px;
+  font-size: 16px;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -96,11 +96,15 @@ h6 {
   font-size: inherit;
 }
 
+*{
+  z-index: 1;
+}
 
 body {
   color: white;
   font-family: 'DIN Pro';
   background-color: #191717;
+  font-weight: 300;
 }
 
 .wrapper{
@@ -120,7 +124,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   filter: brightness(0.1);
-  z-index: -1;
 }
 
 .wrapper::after {
@@ -134,7 +137,6 @@ body {
   filter: blur(100px);
   height: 500px;
   width: 500px;
-  z-index: -1;
 }
 
 .container {
@@ -144,8 +146,9 @@ body {
 
 header {
   position: fixed;
-  top: 3vh;
+  top: 1.5vh;
   width: 100%;
+  z-index: 99;
 }
 
 .header__block {
@@ -162,12 +165,12 @@ header {
 }
 
 .main {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
-  overflow: hidden;
   background: url(img/lines/Rectangle1.svg) no-repeat;
+  overflow-x: hidden;
 }
 
 
@@ -178,14 +181,14 @@ header {
 }
 
 .main__text {
-  width: 30%;
+  width: 35%;
 }
 
 .main__text-content{
   padding-right: 20px;
 }
 
-.title {
+.main__title {
   font-size: 3rem;
   font-weight: 700;
 }
@@ -197,11 +200,14 @@ header {
 .main__subtitle {
   font-size: 20px;
   font-weight: 300;
-  margin-top: 30px;
+  margin-top: 2vh;
+  line-height: 25px;
+  text-align: left;
+
 }
 
 .main__tablet-big{
-  width: 50%;
+  width: 45%;
   text-align: center;
 }
 
@@ -224,18 +230,17 @@ header {
   margin-bottom: 10px;
 }
 
-.btn-more span {
+.btn-more a{
+  display: flex;
   font-size: 20px;
   font-weight: 700;
-  padding: 20px 95px 20px 40px;
+  padding: 20px 85px 20px 40px;
   border-radius: 4px;
   background: var(---2, linear-gradient(135deg, #FCCF31 0%, #F55555 100%));
 }
-
-.btn-more span::after {
-  content: url(img/icon-document.svg);
-  position: absolute;
-  padding-left: 30px;
+.btn-more img {
+  position: relative;
+  left: 20px;
 }
 
 .main__tablet-next {
@@ -270,6 +275,59 @@ header {
   text-transform: uppercase;
 }
 
+.main__scroll-down {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#more-arrows {
+	width: 75px;
+  height: 65px;
+  
+  &:hover {
+    
+    polygon {
+      fill: #FFF;
+      transition: all .2s ease-out;
+
+      &.arrow-bottom {
+        transform: translateY(-18px);
+      }
+
+      &.arrow-top {
+        transform: translateY(18px);
+      }
+    }
+  }
+  
+}
+
+polygon {
+  fill: #FFF;
+  transition: all .2s ease-out;
+    
+  &.arrow-middle {
+	  opacity: 0.75;
+	}
+
+	&.arrow-top {
+	  opacity: 0.5
+	}
+	 
+}
+
+.scroll-down-text{
+  font-size: 16px;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+
 
 @media(max-width: 1200px){
   .container {
@@ -301,18 +359,26 @@ header {
     width: 50%;
   }
 
+ .main__scroll-down{
+  display: none;
+ }
+
 }
 
 
 @media(max-width: 750px){
 
   .main__content{
-    margin-top: 100px;
+    margin-top: 120px;
   }
 
   .main__text-content{
     padding-right: 0;
   }
+
+  .main__title{
+    font-size: 2.5rem;
+  } 
 
   .main__big-block{
     display: block;
@@ -327,20 +393,214 @@ header {
   .main__tablet-big-image {
     height: 250px;
   }
-  .btn-more{
-    margin: 50px 0 100px 0;
-  }
-  .btn-more span{
-    padding: 20px 140px 20px 40px;
-  }
-
+ 
   .main__tablet-next-block{
     width: 100%;
     padding: 10px 0 15px 10px;
+  }
+
+  .main__tablet-next{
+    margin-bottom: 50px;
   }
 
   .main__tablet-big-image img {
     width: auto;
     max-width: 100%;
   }
+}
+
+.active{
+  font-weight: 700;
+}
+
+
+/***************** PRODUCT ******************/
+
+.product {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 100px 0;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+.product__items-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.product__item {
+  background-color: #0B1C47;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 20px 100px 20px 20px;
+  border-radius: 10px;
+}
+.product__item-img img{
+  height: 130px;
+  width: 215px;
+}
+
+.product__item-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  max-width: 550px;
+  margin-bottom: 10px;
+}
+.product__item-subtitle {
+  font-size: 14px;
+  line-height: 17px;
+}
+.product__item-price {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media(max-width: 1200px){
+  .product__item {
+    gap: 20px;
+    padding: 20px 15px 20px 0px;
+  }
+}
+
+
+@media(max-width: 998px){
+  .product__items-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  .product__item {    
+    gap: 20px;
+    flex-direction: column;
+    width: 49%;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+  }
+}
+
+@media(max-width: 750px){
+  .product__item {    
+    gap: 20px;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+  }
+  .btn-more a{
+    padding: 10px 20%;
+  }
+  .big_btn a{
+    padding: 20px 20%;
+  }
+}
+
+
+/*^^^^^^^^^^^^^^^^ PRODUCT ^^^^^^^^^^^^^^^^*/
+
+
+
+
+
+
+/*********************** BURGER **********************/
+
+
+@media (max-width:998px) {
+
+  body.lock {
+    overflow: hidden;
+  }
+
+  .header__ul {
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #010b26dc;
+    transition-duration: 0.5s;
+
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    left: 0;
+    top: -100%;
+    transition: all 0.3s ease 0s;
+    overflow: auto;
+  }
+
+  .header__ul.active {
+    top: 0;
+  }
+
+  .header__ul li {
+
+    display: block;
+    padding: 0;
+    padding: 20px 0;
+  }
+
+  .header__ul li a {
+
+    font-size: 24px;
+  }
+
+  .header__burger{
+    position: relative;
+    width: 40px;
+    height: 25px;
+    right: 15px;
+    z-index: 3;
+    cursor: pointer;
+    display: block;
+  }
+
+
+  .header__burger span{
+    position: absolute;
+    right: 0px;
+    top: 3px;
+    height: 2px;
+    display: block;
+    width: 30%;
+    background-color: white;
+    border-radius: 3px;
+  }
+  .header__burger span:nth-child(2){
+    top: 35%;
+    width: 50%;
+  }
+  .header__burger span:nth-child(3){
+    top: 60%;
+    width: 75%;
+  }
+  .header__burger span:nth-child(4){
+    top: 85%;
+    width: 45%;
+  }
+
+  .header__burger.active .header__burger span {
+    width: 100%;
+  }
+
+  .header__logo img {
+    height: 60%;
+    width: 60%;
+  }
+
+}
+
+/*********************** BURGER **********************/
+
+.max-width{
+  width: 100%; 
 }
