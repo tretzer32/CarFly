@@ -43,7 +43,7 @@ section {
 
 html,
 body {
-  min-height: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   min-width: 320px;
@@ -103,13 +103,14 @@ h6 {
 body {
   color: white;
   font-family: 'DIN Pro';
+  background-color: #191717;
   font-weight: 300;
 }
 
 .wrapper{
-  min-height: 100%;
+  height: auto;
   width: 100%;
-  position: relative;
+  overflow: hidden;
 }
 
 .wrapper::before {
@@ -145,10 +146,10 @@ body {
 
 header {
   position: fixed;
-  padding: 15px 0 5px 0;
   width: 100%;
+  padding: 5px 0;
+  background-color: #08132fad;
   z-index: 99;
-  background: #191717;
 }
 
 .header__block {
@@ -169,11 +170,7 @@ header {
   width: 100%;
   display: flex;
   align-items: center;
-  background: url(img/lines/Rectangle1.svg) no-repeat;
-  overflow: hidden;
-  position: relative;
 }
-
 
 .main__big-block {
   display: flex;
@@ -231,19 +228,6 @@ header {
   margin-bottom: 10px;
 }
 
-.btn-more a{
-  display: flex;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 20px 85px 20px 40px;
-  border-radius: 4px;
-  background: var(---2, linear-gradient(135deg, #FCCF31 0%, #F55555 100%));
-}
-.btn-more img {
-  position: relative;
-  left: 20px;
-}
-
 .main__tablet-next {
   display: flex;
   align-items: center;
@@ -278,7 +262,7 @@ header {
 
 .main__scroll-down {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -322,6 +306,13 @@ polygon {
 	 
 }
 
+.scroll-down-text{
+  font-size: 16px;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+
 
 @media(max-width: 1200px){
   .container {
@@ -363,8 +354,12 @@ polygon {
 @media(max-width: 750px){
 
   .main__content{
-    margin-top: 120px;
+    margin: 120px 0 30px 0;
   }
+
+  .container{
+    overflow: hidden;
+  };
 
   .main__text-content{
     padding-right: 0;
@@ -414,13 +409,13 @@ polygon {
   max-width: 100%;
   display: flex;
   align-items: center;
-  padding: 100px 0;
 }
 
 .title {
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 40px;
+  padding-top: 100px;
 }
 .product__items-block {
   display: flex;
@@ -490,11 +485,8 @@ polygon {
     text-align: center;
     padding: 20px 10px 20px 10px;
   }
-  .btn-more a{
+  .button a{
     padding: 10px 20%;
-  }
-  .big_btn a{
-    padding: 20px 20%;
   }
 }
 
@@ -519,6 +511,7 @@ polygon {
   text-decoration: none;
   user-select: none;
   letter-spacing: 1px;
+  text-transform: uppercase;
   transition: all 0.1s ease-out;
   border-radius: 3px;
   z-index: 2;
@@ -613,6 +606,10 @@ polygon {
     overflow: hidden;
   }
 
+  header{
+    padding: 20px 0;
+  }
+
   .header__ul {
 
     position: fixed;
@@ -624,14 +621,14 @@ polygon {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    left: 0;
-    top: -100%;
+    left: -100%;
+    top: 0%;
     transition: all 0.3s ease 0s;
     overflow: auto;
   }
 
   .header__ul.active {
-    top: 0;
+    left: 0;
   }
 
   .header__ul li {
@@ -648,8 +645,8 @@ polygon {
 
   .header__burger{
     position: relative;
-    width: 40px;
-    height: 25px;
+    width: 50px;
+    height: 40px;
     right: 15px;
     z-index: 3;
     cursor: pointer;
@@ -660,15 +657,19 @@ polygon {
   .header__burger span{
     position: absolute;
     right: 0px;
-    top: 3px;
-    height: 2px;
+    height: 3px;
     display: block;
-    width: 30%;
     background-color: white;
     border-radius: 3px;
+    transition-duration: 0.3s;
+  }
+
+  .header__burger span:nth-child(1){
+    top: 0%;
+    width: 30%;
   }
   .header__burger span:nth-child(2){
-    top: 35%;
+    top: 30%;
     width: 50%;
   }
   .header__burger span:nth-child(3){
@@ -676,12 +677,16 @@ polygon {
     width: 75%;
   }
   .header__burger span:nth-child(4){
-    top: 85%;
+    top: 92%;
     width: 45%;
   }
 
   .header__burger.active .header__burger span {
     width: 100%;
+  }
+
+  .header__logo{
+    z-index: 2;
   }
 
   .header__logo img {
@@ -692,7 +697,3 @@ polygon {
 }
 
 /*********************** BURGER **********************/
-
-.max-width{
-  width: 100%; 
-}
