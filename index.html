@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
 </head>
 
 <body>
@@ -34,7 +35,7 @@
             </div>
         </header>
 
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+        <svg class="goo">
             <defs>
                 <filter id="goo">
                     <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
@@ -127,9 +128,9 @@
             </div>
         </div>
 
-        <div class="product">
+        <section class="product">
             <div class="container">
-                <div class="product__title">
+                <div class="title-block">
                     <h2 class="title">Продукция</h2>
                 </div>
                 <div class="product__items-block">
@@ -263,11 +264,80 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="buyProduct">
+            <div class="container">
+                <div class="title-block title-block_btns">
+                    <h2 class="title">Где купить?</h2>
+
+                    <div class="my-slider__btns">
+                        <div class="my-slider__btn-prev disabled">
+                            <svg width="100" height="20">
+                                <path opacity="1" d="M98.5 14H7L19 2" stroke="white" stroke-width="5" />
+                            </svg>
+                        </div>
+                        <div class="my-slider__btn-next">
+                            <svg width="100" height="20">
+                                <path opacity="1" d="M1.5 14H93L81 2" stroke="white" stroke-width="5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-slider">
+                    <div class="my-slider__item">
+                        <a class="my-slider__item-block" href="#">
+                            <div class="my-slider__item-image">
+                                <img src="img/links-logo/link-logo1.svg" alt="#">
+                            </div>
+                            <div class="my-slider__item-text">
+                                <p>dragoned.com</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="my-slider__item" href="#">
+                        <a class="my-slider__item-block" href="#">
+                            <div class="my-slider__item-image">
+                                <img src="img/links-logo/link-logo2.svg" alt="#">
+                            </div>
+                            <div class="my-slider__item-text">
+                                <p>supershop.com</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="my-slider__item" href="#">
+                        <a class="my-slider__item-block" href="#">
+                            <div class="my-slider__item-image">
+                                <img src="img/links-logo/link-logo3.svg" alt="#">
+                            </div>
+                            <div class="my-slider__item-text">
+                                <p>detaliclub.com</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="my-slider__item" href="#">
+                        <a class="my-slider__item-block" href="#">
+                            <div class="my-slider__item-image">
+                                <img src="img/links-logo/link-logo4.svg" alt="#">
+                            </div>
+                            <div class="my-slider__item-text">
+                                <p>appende.com</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/bundle.js"></script>
 </body>
 
 </html>
