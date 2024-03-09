@@ -590,6 +590,60 @@ polygon {
 /*^^^^^^^^^^^^^^^^ BuyPRODUCT ^^^^^^^^^^^^^^^^*/
 
 
+
+
+
+.questions {
+  height: 100vh;
+  width: 100%;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.frag__contant {
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+}
+.frag__question {
+  background-color: #0B1C47;
+  cursor: pointer;
+}
+
+.frag__question h3{
+  padding: 25px 10px 25px 40px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.frag__answer-text{
+  padding: 15px 100px 20px 30px;
+}
+
+.frag__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition-duration: 1s;
+  background-color: #081330;
+}
+
+.show{
+  max-height: 300px;
+}
+
+@media(max-width: 998px){
+  .frag__question h3{
+    padding: 25px 10px 15px 25px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .frag__answer-text{
+    padding: 15px 10px 15px 20px;
+  }  
+}
+
+
 /***************** BUTTON *****************/
 
 
@@ -794,3 +848,7 @@ polygon {
 }
 
 /*********************** BURGER **********************/
+
+
+
+
