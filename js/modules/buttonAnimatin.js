@@ -1,5 +1,7 @@
 function buttonAnimation(btns, circleTopLeft, circleBottomRight, effectButton) {
+
   document.querySelectorAll(btns).forEach(function (button) {
+    var isAnimating = false; 
     var circlesTopLeft = button.parentElement.querySelectorAll(circleTopLeft);
     var circlesBottomRight = button.parentElement.querySelectorAll(circleBottomRight);
 
@@ -42,7 +44,14 @@ function buttonAnimation(btns, circleTopLeft, circleBottomRight, effectButton) {
     btTl.timeScale(1.5);
 
     button.addEventListener('mouseover', function () {
-      btTl.restart();
+      if (!isAnimating) {
+        isAnimating = true;
+        btTl.restart();
+
+        btTl.eventCallback('onComplete', function () {
+          isAnimating = false;
+        });
+      }
     });
   });
 }

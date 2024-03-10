@@ -91,7 +91,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 function buttonAnimation(btns, circleTopLeft, circleBottomRight, effectButton) {
+
   document.querySelectorAll(btns).forEach(function (button) {
+    var isAnimating = false; 
     var circlesTopLeft = button.parentElement.querySelectorAll(circleTopLeft);
     var circlesBottomRight = button.parentElement.querySelectorAll(circleBottomRight);
 
@@ -134,7 +136,14 @@ function buttonAnimation(btns, circleTopLeft, circleBottomRight, effectButton) {
     btTl.timeScale(1.5);
 
     button.addEventListener('mouseover', function () {
-      btTl.restart();
+      if (!isAnimating) {
+        isAnimating = true;
+        btTl.restart();
+
+        btTl.eventCallback('onComplete', function () {
+          isAnimating = false;
+        });
+      }
     });
   });
 }
@@ -180,25 +189,66 @@ function mySlider(btnsContainer, prevButton, nextButton) {
         }
     });
 
-    slider.events.on('indexChanged', (info) => {
-
-        const numberOfItems = info.items;
-        const isLastSlide = info.index === info.slideCount - numberOfItems;
-        const isFirstSlide = info.index === 0;
-
-        if (isFirstSlide) {
-            prevButton__slider.classList.add('disabled');
-        } else if (isLastSlide) {
-            nextButton__slider.classList.add('disabled');
-        } else {
-            prevButton__slider.classList.remove('disabled');
-            nextButton__slider.classList.remove('disabled');
-        }
-    });
-
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mySlider);
+
+/***/ }),
+
+/***/ "./js/modules/tabletAnimation.js":
+/*!***************************************!*\
+  !*** ./js/modules/tabletAnimation.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function tabletAnimation(mainBlock, bigImage, nextImage, nextButton, nextRow) {
+   
+    const main_Block = document.querySelector(mainBlock);
+    const big_Image = document.querySelector(bigImage);
+    const next_Image = document.querySelector(nextImage);
+    const next_Button = document.querySelector(nextButton);
+    const next_Row = document.querySelector(nextRow);
+
+    const data = [
+        'img/main/carRadio.svg',
+        'img/main/carRadio2.svg'
+    ];
+
+    let curIndex = 0;
+    let isAnimating = false;
+
+    next_Button.addEventListener('click', tabletAnimation);
+    
+    next_Button.addEventListener('click', tabletAnimation);
+    
+    function tabletAnimation() {
+      if (isAnimating) {
+        return;
+      }
+    
+      isAnimating = true;
+    
+      big_Image.classList.add("fade-in");
+      next_Row.classList.add('press-in');
+      setTimeout(() => {
+        curIndex = (curIndex + 1) % data.length;
+        big_Image.src = data[curIndex];
+        next_Image.src = data[(curIndex + 1) % data.length];
+    
+        big_Image.classList.remove("fade-in");
+        next_Row.classList.remove('press-in');
+    
+        isAnimating = false;
+      }, 200);
+    }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tabletAnimation);
+
 
 /***/ }),
 
@@ -3949,6 +3999,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_buttonAnimatin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/buttonAnimatin */ "./js/modules/buttonAnimatin.js");
 /* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider */ "./js/modules/slider.js");
 /* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/burger */ "./js/modules/burger.js");
+/* harmony import */ var _modules_tabletAnimation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/tabletAnimation */ "./js/modules/tabletAnimation.js");
+
 
 
 
@@ -3958,7 +4010,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_modules_buttonAnimatin__WEBPACK_IMPORTED_MODULE_0__["default"])('.button--bubble', '.circle.top-left', '.circle.bottom-right', '.button.effect-button');
   (0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__["default"])('.my-slider__btns', '.my-slider__btn-prev', '.my-slider__btn-next');
   (0,_modules_burger__WEBPACK_IMPORTED_MODULE_2__["default"])('.header__burger', '.header__ul', 'body', '.header__burger span');
-
+  (0,_modules_tabletAnimation__WEBPACK_IMPORTED_MODULE_3__["default"])('.main__big-block', '.main__tablet-big-image img', '.main__tablet-next-block img', ".main__tablet-next", '.main__tablet-next-row');
 
   const block = document.querySelectorAll('.frag__block');
   const ans = document.querySelectorAll('.frag__answer');
@@ -3982,7 +4034,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
-
 })();
 
 /******/ })()

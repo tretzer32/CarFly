@@ -212,9 +212,23 @@ header {
   text-align: center;
 }
 
+.main__tablet-big-image{
+  height: 320px;
+}
+
 .main__tablet-big-image img {
   height: 100%;
   width: 100%;
+}
+
+.fade-in{
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.press-in{
+  transform: scale(0.8);
+  transition: transform 0.2 ease;
 }
 
 .icons__block {
@@ -575,10 +589,6 @@ polygon {
   transition-duration: 0.3s;
 }
 
-.disabled {
-  opacity: 0.2;
-}
-
 @media (max-width: 600px){
   .my-slider__btns{
     position: relative;
@@ -764,7 +774,6 @@ polygon {
     width: 100%;
     height: 100%;
     background: #010b26dc;
-    transition-duration: 0.5s;
 
     flex-direction: column;
     text-align: center;
